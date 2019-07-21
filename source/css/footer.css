@@ -51,3 +51,26 @@
   }
 }
 
+.list-inline {
+  list-style: none;
+  margin: 0;
+}
+
+.list-inline > li {
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+ul.contact-buttons > li {
+  font-size: 2em;
+  display: inline;
+}
+
+ul.contact-buttons > li:last-child {
+  margin-right: 0;
+}
+
+.contact-button {
+  text-decoration: none;
+}

@@ -20,6 +20,12 @@
   &-meta {
     font-size: 1rem;
     margin-bottom: 10px;
+    overflow:auto;
+    color: rgba(0, 0, 0, 0.5);
+    
+    .dark-theme & {
+      color: rgba(255, 255, 255, 0.5);
+    }
 
     @media (--phone) {
       font-size: .85rem;
@@ -27,11 +33,17 @@
   }
 
   &-title {
-    font-size: 2.625rem;
+    font-size: 2rem;
+    font-weight: normal;
     margin: 0 0 20px;
+    color: var(--light-color-secondary);
+
+      .dark-theme & {
+        color: var(--dark-color-secondary);
+      }
 
     @media (--phone) {
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
 
     a {
@@ -40,18 +52,50 @@
   }
 
   &-tags {
-    display: block;
-    margin-bottom: 20px;
-    font-size: 1rem;
-    opacity: .5;
+    float: right !important;
+    box-sizing: border-box;
+  }
 
-    a {
-      text-decoration: none;
+  &-tag a {
+    padding: 0 10px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    text-decoration: none;
+
+    .dark-theme & {
+      border-color: rgba(255, 255, 255, 0.5);
     }
+  }
+
+  &-tag a:hover {
+    transition: color,border-color,background-color 0.2s linear;
+    color: var(--light-background-secondary);
+    background-color: var(--light-color-secondary);
+
+    .dark-theme & {
+      color: var(--dark-background-secondary);
+      background-color: var(--dark-color-secondary);
+    }
+  }
+
+  &-date {
+    box-sizing: border-box;
+    float: left !important;
+    font-size: 1.1rem;
   }
 
   &-content {
     margin-top: 30px;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  &-content p {
+    text-indent: 2.5em;
+  }
+
+  &-content li {
+    text-indent: 0em;
   }
 
   &-cover {

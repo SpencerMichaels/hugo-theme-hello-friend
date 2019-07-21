@@ -1,0 +1,16 @@
+{{ define "main" }}
+  <div class="post">
+    <div align="center">
+      <h2 class="home-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
+      {{ with .Params.Cover }}
+        <img src="../{{ . }}" class="home-cover" />
+      {{ end }}
+    </div>
+
+    <div class="post-content">
+      {{ .Content }}
+    </div>
+  </div>
+
+  {{ partial "posts-list.html" . }}
+{{ end }}

@@ -1,0 +1,11 @@
+{{ range $lang := .Site.Languages }}
+  {{ if not (eq . $.Site.Language) }}
+    {{ range $.Translations }}
+      {{ if eq .Language $lang }}
+        <a href="{{ .Permalink }}" class="lang-inactive">{{ .Language.LanguageName }}</a>
+      {{ end }}
+    {{ else }}
+      <a class="lang-unavailable">{{ $lang.LanguageName }}</a>
+    {{ end }}
+  {{ end }}
+{{ end }}

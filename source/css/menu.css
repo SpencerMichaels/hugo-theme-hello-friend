@@ -20,7 +20,6 @@
   border-right: 1px solid;
   margin-right: 18px;
   padding-right: 24px;
-  font-weight: 600;
 
   @media (--phone) {
     @mixin menu;
@@ -31,6 +30,14 @@
 
   a {
     text-decoration: none;
+  }
+
+  &__active {
+    font-weight: bold;
+    color: var(--light-color-secondary);
+    .dark-theme & {
+      color: var(--dark-color-secondary);
+    }
   }
 
   &__inner {

@@ -1,0 +1,17 @@
+{{ $relpath := .Get "relpath"  }}
+{{ $.Scratch.Set "dir" "content/" }}
+{{ $.Scratch.Add "dir" $.Site.Language.Lang }}
+{{ $.Scratch.Add "dir" "/" }}
+{{ $.Scratch.Add "dir" $.Page.File.Dir }}
+{{ $.Scratch.Add "dir" $relpath }}
+{{ $dir := $.Scratch.Get "dir"}}
+{{ $files := readDir $dir }}
+
+{{ range $files }}
+<ul>
+  {{ $name_arr := split .Name "." }}
+  {{ $name := index $name_arr 0 }}
+  <li><a href="{{ $relpath }}/{{ .Name }}">{{ $name }}</a></li>
+</ul>
+{{ end }}
+

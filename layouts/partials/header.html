@@ -1,6 +1,8 @@
 <header class="header">
   <span class="header__inner">
-    {{ partial "logo.html" . }}
+    <a href="{{ $.Site.BaseURL }}" class="header__title" style="text-decoration: none;">
+      {{ $.Site.Title }}
+    </a>
     <span class="header__right">
       {{ if len $.Site.Menus }}
         {{ partial "menu.html" . }}
@@ -11,8 +13,13 @@
           </svg>
         </span>
       {{ end }}
-      <span class="theme-toggle">
-        {{ partial "theme-icon.html" . }}
+      <span style="display:flex">
+        <span class="lang-toggle">
+          {{ partial "lang-toggle.html" . }}
+        </span>
+        <span class="theme-toggle">
+          {{ partial "theme-icon.html" . }}
+        </span>
       </span>
     </span>
   </span>

@@ -8,23 +8,10 @@
 <!-- Theme CSS -->
 <link rel="stylesheet" href="{{ "assets/style.css" | absURL }}">
 
-<!-- Custom CSS to override theme properties (/static/style.css) -->
-<link rel="stylesheet" href="{{ "style.css" | absURL }}">
-
-<!-- Icons -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ "img/apple-touch-icon-144-precomposed.png" | absURL }}">
-<link rel="shortcut icon" href="{{ "img/favicon.png" | absURL }}">
-
-<!-- Twitter Card -->
-{{ template "_internal/twitter_cards.html" . }}
-
-<!-- OG data -->
-{{ template "_internal/opengraph.html" . }}
-
 <!-- RSS | JSON -->
 {{ range .AlternativeOutputFormats -}}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
 {{ end -}}
 
-<!-- head custom -->
-{{- partial "extended_head.html" . }}
+<!-- Font-Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">

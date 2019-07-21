@@ -3,30 +3,24 @@
     <h2 class="post-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
     <div class="post-meta">
       {{ with .Date | default nil }}
-        <span class="post-date">
-            {{ .Format ($.Site.Params.DateFormatSingle | default "2006-01-02") }}
+        <span class="post-date pull-left">
+          <time datetime="{{ .Format "2006-01-02T15:04:05Z07:00" | safeHTML }}">
+            {{ .Format "Jan 2, 2006" }}
+          </time>
         </span>
       {{ end }}
-      {{ with .Params.Author }}<span class="post-author">— {{ $.Site.Params.WrittenBy | default "Written by" }} {{ . }}</span>{{ end }}
-      {{ if $.Site.Params.ShowReadingTime }}
-        <span class="post-read-time">— {{ .ReadingTime }} {{ $.Site.Params.MinuteReadingTime | default "min read" }}</span>
+
+      {{ if .Params.tags }}
+        <span class="post-tags pull-right">
+          {{ range .Params.tags }}
+          <span class="post-tag small"><a href="{{ (urlize (printf "tags/%s" . )) | absURL }}/">{{ . }}</a></span>&nbsp;
+          {{ end }}
+        </span>
       {{ end }}
     </div>
 
-    {{ if .Params.tags }}
-      <span class="post-tags">
-        {{ range .Params.tags }}
-          #<a href="{{ (urlize (printf "tags/%s" . )) | absURL }}/">{{ . }}</a>&nbsp;
-        {{ end }}
-      </span>
-    {{ end }}
-
     {{ if .Params.Cover }}
-      {{ if .Params.UseRelativeCover }}
-        <img src="{{ (printf "%s%s" .Permalink .Params.Cover ) }}" class="post-cover" />
-      {{ else }}
-        <img src="{{ .Params.Cover | absURL }}" class="post-cover" />
-      {{ end }}
+      <img src="{{ .Params.Cover }}" class="post-cover" />
     {{ end }}
 
     <div class="post-content">
@@ -39,26 +33,18 @@
           <hr />
         </div>
         <div class="pagination__buttons">
-          {{ if .NextInSection }}
-            <span class="button previous">
-              <a href="{{ .NextInSection.Permalink }}">
-                <span class="button__icon">←</span>
-                <span class="button__text">{{ .NextInSection.Title }}</span>
-              </a>
-            </span>
-          {{ end }}
           {{ if .PrevInSection }}
-            <span class="button next">
-              <a href="{{ .PrevInSection.Permalink }}">
-                <span class="button__text">{{ .PrevInSection.Title }}</span>
-                <span class="button__icon">→</span>
-              </a>
-            </span>
+            <a class="button previous" href="{{ .PrevInSection.Permalink }}">
+              « {{ .PrevInSection.Title }}
+            </a>
+          {{ end }}
+          {{ if .NextInSection }}
+            <a class="button next" href="{{ .NextInSection.Permalink }}">
+              {{ .NextInSection.Title }} »
+            </a>
           {{ end }}
         </div>
       </div>
     {{ end }}
-
-    {{ partial "comments.html" . }}
     </div>
 {{ end }}

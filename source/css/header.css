@@ -1,13 +1,22 @@
 .header {
-  background: #fafafa;
+  background: var(--light-background-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   padding: 20px;
+  border-bottom: 1px solid var(--light-border-color);
+  color: var(--light-color-secondary);
 
   .dark-theme & {
-    background: #252627;
+    color: var(--dark-color-secondary);
+    background: var(--dark-background-secondary);
+    border-bottom: 1px solid var(--dark-border-color);
+  }
+
+  &__title {
+    font-size: 1.2rem;
+    font-weight: bold;
   }
 
   &__right {
@@ -41,3 +50,17 @@
 .theme-toggler {
   fill: currentColor;
 }
+
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding-right: 10pt;
+  font-size: 1.2rem;
+}
+
+.lang-toggle a {
+  text-decoration: none;
+}
+
